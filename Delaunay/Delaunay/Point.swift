@@ -7,47 +7,51 @@
 //
 
 import Foundation
-public class Point:Printable{
-    public static let zeroPoint = {return Point(x:0,y:0)}()
+public class Point {
+    public static let zeroPoint = {
+        return Point(x:0,y:0)
+    }()
     
-    public var x:Double
-    public var y:Double
-    public init(x:Double, y:Double){
-        self.x = x;
+    public var x: Double
+    public var y: Double
+    
+    public init(x: Double, y: Double) {
+        self.x = x
         self.y = y
     }
     
-    public var description:String{
-        let xstr = String(format:"%.2f",x)
-        let ystr = String(format:"%.2f",y)
-        return "(\(xstr), \(ystr))"
-    }
-    
-    public var length:Double{
+    public var length: Double {
         return Point.distance(self, Point.zeroPoint)
     }
-    public func distance(p:Point)->Double{
+    
+    public func distance(p: Point) -> Double {
         return Point.distance(self, p)
     }
     
-    public static func interpolate(p1:Point, p2:Point, t:Double)->Point{
+    public static func interpolate(p1: Point, p2: Point, t: Double) -> Point {
         let dx = (p2.x - p1.x) * t
         let dy = (p2.y - p1.y) * t
         return Point(x: p1.x + dx, y: p1.y + dy)
-
     }
 }
 
+extension Point: CustomStringConvertible {
+    public var description: String {
+        let xstr = String(format: "%.2f", x)
+        let ystr = String(format: "%.2f", y)
+        return "(\(xstr), \(ystr))"
+    }
+}
 
-extension Point :Hashable{
-    static func distance( lhs:Point, _ rhs:Point)->Double{
-        let dx = lhs.x - rhs.x;
-        let dy = lhs.y - rhs.y;
+extension Point: Hashable {
+    static func distance(lhs: Point, _ rhs: Point) -> Double {
+        let dx = lhs.x - rhs.x
+        let dy = lhs.y - rhs.y
         return sqrt((dx * dx) + (dy * dy))
     }
     
-    public var hashValue : Int {
-            return self.x.hashValue^self.y.hashValue
+    public var hashValue: Int {
+        return self.x.hashValue^self.y.hashValue
     }
 }
 

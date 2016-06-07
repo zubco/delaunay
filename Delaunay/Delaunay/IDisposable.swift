@@ -1,3 +1,3 @@
-public protocol IDisposable{
+public protocol IDisposable {
     func dispose()
 }

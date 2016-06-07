@@ -80,12 +80,12 @@ public class Voronoi
     public func neighborSitesForSite(coord:Point)->[Point]
     {
         var points = [Point]();
-        var site = sitesIndexedByLocation[coord];
+        let site = sitesIndexedByLocation[coord];
         if (site == nil)
         {
             return points;
         }
-        var sites = site!.neighborSites();
+        let sites = site!.neighborSites();
         for neighbor in sites
         {
             points.append(neighbor.coord);
@@ -100,12 +100,12 @@ public class Voronoi
     
     public func voronoiBoundaryForSite(coord:Point)->[LineSegment]
     {
-        return visibleLineSegments(selectEdgesForSitePoint(coord, edges));
+        return visibleLineSegments(selectEdgesForSitePoint(coord, edgesToTest: edges));
     }
     
     public func delaunayLinesForSite(coord:Point)->[LineSegment]
     {
-        return delaunayLinesForEdges(selectEdgesForSitePoint(coord, edges));
+        return delaunayLinesForEdges(selectEdgesForSitePoint(coord, edgesToTest: edges));
     }
     
     public func voronoiDiagram()->[LineSegment]
@@ -171,19 +171,6 @@ public class Voronoi
     public func siteColors(/*referenceImage:BitmapData = nil*/)->[UInt]
     {
         return sites.siteColors(/*referenceImage*/);
-    }
-    
-    /**
-    *
-    * @param proximityMap a BitmapData whose regions are filled with the site index values; see PlanePointsCanvas::fillRegions()
-    * @param x
-    * @param y
-    * @return coordinates of nearest Site to (x, y)
-    *
-    */
-    public func nearestSitePoint(/*proximityMap:BitmapData,*/ x:Double, y:Double)->Point?
-    {
-        return sites.nearestSitePoint(/*proximityMap,*/ x, y: y);
     }
     
     public func siteCoords()->[Point]

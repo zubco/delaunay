@@ -118,14 +118,14 @@ public final class EdgeList{
         }
         /* Now search linear list of halfedges for the correct one */
         if (halfEdge === leftEnd  || (halfEdge !== rightEnd && halfEdge!.isLeftOf(p))){
-            do{
+            repeat {
                 halfEdge = halfEdge!.edgeListRightNeighbor;
             }
             while (halfEdge !== rightEnd && halfEdge!.isLeftOf(p));
             halfEdge = halfEdge!.edgeListLeftNeighbor;
         }
         else {
-            do{
+            repeat {
                 halfEdge = halfEdge!.edgeListLeftNeighbor;
             }
             while (halfEdge !== leftEnd && !halfEdge!.isLeftOf(p));

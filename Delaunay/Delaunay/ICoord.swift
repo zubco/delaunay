@@ -1,6 +1,5 @@
 import Foundation
 
-protocol ICoord:class
-{
-    var coord:Point!{get};
+protocol ICoord: class {
+    var coord: Point! { get }
 }

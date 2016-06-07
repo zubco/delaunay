@@ -1,17 +1,17 @@
 import Foundation
 
-public class Circle:Printable{
-    public let center:Point;
-    public let radius:Double;
+public class Circle {
+    public let center: Point
+    public let radius: Double
     
-    public init(centerX:Double, centerY:Double, radius:Double)
-    {
-        self.center = Point(x:centerX, y:centerY);
-        self.radius = radius;
+    public init(centerX: Double, centerY: Double, radius: Double) {
+        self.center = Point(x: centerX, y: centerY)
+        self.radius = radius
     }
-    
-    public var description:String{
-        return "Circle (center: \( center) + ; radius: \(radius))";
-    }
+}
 
+extension Circle: CustomStringConvertible {
+    public var description: String {
+        return "Circle (center: \( center) + ; radius: \(radius))"
+    }
 }
