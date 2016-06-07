@@ -1,4 +1,4 @@
-# as3delaunay-Swift
+# Delaunay
 
 Swift implementation of the action script library here:
 http://nodename.github.io/as3delaunay/
